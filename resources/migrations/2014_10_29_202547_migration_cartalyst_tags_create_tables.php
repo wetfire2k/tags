@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * Part of the Tags package.
  *
  * NOTICE OF LICENSE
@@ -11,11 +11,11 @@
  * bundled with this package in the LICENSE file.
  *
  * @package    Tags
- * @version    7.0.0
+ * @version    10.0.1
  * @author     Cartalyst LLC
  * @license    BSD License (3-clause)
- * @copyright  (c) 2011-2018, Cartalyst LLC
- * @link       http://cartalyst.com
+ * @copyright  (c) 2011-2020, Cartalyst LLC
+ * @link       https://cartalyst.com
  */
 
 use Illuminate\Support\Facades\Schema;
@@ -39,7 +39,7 @@ class MigrationCartalystTagsCreateTables extends Migration
 
             $table->engine = 'InnoDB';
 
-            $table->index([ 'taggable_type', 'taggable_id' ]);
+            $table->index(['taggable_type', 'taggable_id']);
         });
 
         Schema::create('tags', function (Blueprint $table) {
@@ -61,10 +61,7 @@ class MigrationCartalystTagsCreateTables extends Migration
      */
     public function down()
     {
-        $tables = [ 'tagged', 'tags' ];
-
-        foreach ($tables as $table) {
-            Schema::dropIfExists($table);
-        }
+        Schema::dropIfExists('tagged');
+        Schema::dropIfExists('tags');
     }
 }

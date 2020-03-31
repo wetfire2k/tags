@@ -1,15 +1,35 @@
-# Change Log
+# Changelog
 
-This project follows [Semantic Versioning](CONTRIBUTING.md).
+### v10.0.1 - 2020-03-06
 
-## Proposals
+`FIXED`
 
-We do not give estimated times for completion on `Accepted` Proposals.
+- Regression on the getter and setter for the custom slug generator.
 
-- [Accepted](https://github.com/cartalyst/tags/labels/Accepted)
-- [Rejected](https://github.com/cartalyst/tags/labels/Rejected)
+### v10.0.0 - 2020-03-03
 
----
+- Updated for Laravel 7.
+
+### v9.0.1 - 2020-03-06
+
+`FIXED`
+
+- Regression on the getter and setter for the custom slug generator.
+
+### v9.0.0 - 2019-08-30
+
+- BC Break: PHP 7.2 is the minimum required PHP version
+- BC Break: Laravel 6.0 is the minimum supported Laravel version
+
+### v8.0.0 - 2019-03-02
+
+`ADDED`
+
+- Laravel 5.8 support.
+
+`REMOVED`
+
+- Laravel 5.7 support.
 
 ### v7.0.0 - 2018-10-03
 

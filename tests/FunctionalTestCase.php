@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * Part of the Tags package.
  *
  * NOTICE OF LICENSE
@@ -11,11 +11,11 @@
  * bundled with this package in the LICENSE file.
  *
  * @package    Tags
- * @version    7.0.0
+ * @version    10.0.1
  * @author     Cartalyst LLC
  * @license    BSD License (3-clause)
- * @copyright  (c) 2011-2018, Cartalyst LLC
- * @link       http://cartalyst.com
+ * @copyright  (c) 2011-2020, Cartalyst LLC
+ * @link       https://cartalyst.com
  */
 
 namespace Cartalyst\Tags\Tests;
@@ -28,13 +28,13 @@ class FunctionalTestCase extends \Orchestra\Testbench\TestCase
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
         $this->loadMigrationsFrom([
             '--database' => 'testbench',
-            '--realpath' => realpath(__DIR__.'/../resources/migrations'),
+            '--path'     => realpath(__DIR__.'/../resources/migrations'),
         ]);
 
         Schema::create('posts', function ($table) {
@@ -75,6 +75,6 @@ class FunctionalTestCase extends \Orchestra\Testbench\TestCase
      */
     protected function createPost()
     {
-        return Post::create([ 'title' => 'My Test Post' ]);
+        return Post::create(['title' => 'My Test Post']);
     }
 }

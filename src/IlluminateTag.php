@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * Part of the Tags package.
  *
  * NOTICE OF LICENSE
@@ -11,17 +11,19 @@
  * bundled with this package in the LICENSE file.
  *
  * @package    Tags
- * @version    7.0.0
+ * @version    10.0.1
  * @author     Cartalyst LLC
  * @license    BSD License (3-clause)
- * @copyright  (c) 2011-2018, Cartalyst LLC
- * @link       http://cartalyst.com
+ * @copyright  (c) 2011-2020, Cartalyst LLC
+ * @link       https://cartalyst.com
  */
 
 namespace Cartalyst\Tags;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class IlluminateTag extends Model
 {
@@ -70,7 +72,7 @@ class IlluminateTag extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function taggable()
+    public function taggable(): MorphTo
     {
         return $this->morphTo();
     }
@@ -80,7 +82,7 @@ class IlluminateTag extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function tagged()
+    public function tagged(): HasMany
     {
         return $this->hasMany(static::$taggedModel, 'tag_id');
     }
@@ -88,11 +90,12 @@ class IlluminateTag extends Model
     /**
      * Finds a tag by its name.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @param  string  $name
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string                                $name
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeName(Builder $query, $name)
+    public function scopeName(Builder $query, string $name): Builder
     {
         return $query->whereName($name);
     }
@@ -100,11 +103,12 @@ class IlluminateTag extends Model
     /**
      * Finds a tag by its slug.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @param  string  $slug
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string                                $slug
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeSlug(Builder $query, $slug)
+    public function scopeSlug(Builder $query, string $slug): Builder
     {
         return $query->whereSlug($slug);
     }
@@ -114,7 +118,7 @@ class IlluminateTag extends Model
      *
      * @return string
      */
-    public static function getTaggedModel()
+    public static function getTaggedModel(): string
     {
         return static::$taggedModel;
     }
@@ -122,10 +126,11 @@ class IlluminateTag extends Model
     /**
      * Sets the tagged entities model.
      *
-     * @param  string  $taggedModel
+     * @param string $taggedModel
+     *
      * @return void
      */
-    public static function setTaggedModel($taggedModel)
+    public static function setTaggedModel(string $taggedModel): void
     {
         static::$taggedModel = $taggedModel;
     }
