@@ -1,15 +1,15 @@
-# Change Log
+# Changelog
 
-This project follows [Semantic Versioning](CONTRIBUTING.md).
+### v9.0.1 - 2020-03-06
 
-## Proposals
+`FIXED`
 
-We do not give estimated times for completion on `Accepted` Proposals.
+- Regression on the getter and setter for the custom slug generator.
 
-- [Accepted](https://github.com/cartalyst/tags/labels/Accepted)
-- [Rejected](https://github.com/cartalyst/tags/labels/Rejected)
+### v9.0.0 - 2019-08-30
 
----
+- BC Break: PHP 7.2 is the minimum required PHP version
+- BC Break: Laravel 6.0 is the minimum supported Laravel version
 
 ### v8.0.0 - 2019-03-02
 
