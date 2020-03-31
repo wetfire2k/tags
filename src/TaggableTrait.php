@@ -158,7 +158,7 @@ trait TaggableTrait
     /**
      * {@inheritdoc}
      */
-    public function tag($tags, $lang=null)
+    public function tag($tags, $lang=null): bool
     {
         foreach ($this->prepareTags($tags) as $tag) {
             $this->addTag($tag, $lang);
@@ -170,7 +170,7 @@ trait TaggableTrait
     /**
      * {@inheritdoc}
      */
-    public function untag($tags = null, $lang = null)
+    public function untag($tags = null, $lang = null): bool
     {
         if( empty($lang) ){
             $tags = $tags ?: $this->tags->pluck('name')->all();
