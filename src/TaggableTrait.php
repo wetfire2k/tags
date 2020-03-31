@@ -273,7 +273,7 @@ trait TaggableTrait
     /**
      * {@inheritdoc}
      */
-    public function prepareTags($tags): array
+    public function prepareTags($tags, $lang = NULL): array
     {
         if (is_null($tags)) {
             return [];
