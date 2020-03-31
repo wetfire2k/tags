@@ -216,7 +216,7 @@ trait TaggableTrait
     /**
      * {@inheritdoc}
      */
-    public function addTag(string $name, $lang = null)
+    public function addTag($name, $lang = null)
     {
         $tag = $this->createTagsModel()->firstOrNew([
             'slug'      => $this->generateTagSlug($name),
@@ -242,7 +242,7 @@ trait TaggableTrait
     /**
      * {@inheritdoc}
      */
-    public function removeTag(string $name, $lang = null)
+    public function removeTag($name, $lang = null)
     {
         $slug = $this->generateTagSlug($name);
 
