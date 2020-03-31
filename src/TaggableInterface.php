@@ -124,10 +124,11 @@ interface TaggableInterface
      * Attaches multiple tags to the entity.
      *
      * @param array|string $tags
+     * @param  string  $lang
      *
      * @return bool
      */
-    public function tag($tags): bool;
+    public function tag($tags, $lang = null): bool;
 
     /**
      * Detaches multiple tags from the entity or if no tags are
