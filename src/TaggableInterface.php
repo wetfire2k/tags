@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * Part of the Tags package.
  *
  * NOTICE OF LICENSE
@@ -11,7 +11,7 @@
  * bundled with this package in the LICENSE file.
  *
  * @package    Tags
- * @version    8.0.0
+ * @version    9.0.1
  * @author     Cartalyst LLC
  * @license    BSD License (3-clause)
  * @copyright  (c) 2011-2019, Cartalyst LLC
@@ -20,7 +20,9 @@
 
 namespace Cartalyst\Tags;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 interface TaggableInterface
 {
@@ -29,107 +31,113 @@ interface TaggableInterface
      *
      * @return string
      */
-    public static function getTagsDelimiter();
+    public static function getTagsDelimiter(): string;
 
     /**
      * Sets the tags delimiter.
      *
-     * @param  string  $delimiter
-     * @return $this
+     * @param string $delimiter
+     *
+     * @return void
      */
-    public static function setTagsDelimiter($delimiter);
+    public static function setTagsDelimiter(string $delimiter): void;
 
     /**
      * Returns the Eloquent tags model name.
      *
      * @return string
      */
-    public static function getTagsModel();
+    public static function getTagsModel(): string;
 
     /**
      * Sets the Eloquent tags model name.
      *
-     * @param  string  $model
+     * @param string $model
+     *
      * @return void
      */
-    public static function setTagsModel($model);
+    public static function setTagsModel(string $model): void;
 
     /**
      * Returns the slug generator.
      *
-     * @return string
+     * @return \Closure|string
      */
     public static function getSlugGenerator();
 
     /**
      * Sets the slug generator.
      *
-     * @param  string  $name
+     * @param \Closure|string $name
+     *
      * @return void
      */
-    public static function setSlugGenerator($name);
+    public static function setSlugGenerator($name): void;
 
     /**
      * Returns the entity Eloquent tag model object.
      * @param  string  $lang
      * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
      */
-    public function tags();
+    public function tags(): MorphToMany;
 
     /**
      * Returns all the tags under the entity namespace.    
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public static function allTags();
+    public static function allTags(): Builder;
 
     /**
      * Returns the entities with only the given tags.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @param  string|array  $tags    
-     * @param  string  $type
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param array|string                          $tags
+     * @param string                                $type
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public static function scopeWhereTag(Builder $query, $tags, $type = 'slug');
+    public static function scopeWhereTag(Builder $query, $tags, string $type = 'slug'): Builder;
 
     /**
      * Returns the entities with one of the given tags.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @param  string|array  $tags
-     * @param  string  $type
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param array|string                          $tags
+     * @param string                                $type
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public static function scopeWithTag(Builder $query, $tags, $type = 'slug');
+    public static function scopeWithTag(Builder $query, $tags, string $type = 'slug'): Builder;
 
     /**
      * Returns the entities that do not have one of the given tags.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @param  string|array  $tags    
-     * @param  string  $type
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param array|string                          $tags
+     * @param string                                $type
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public static function scopeWithoutTag(Builder $query, $tags, $type = 'slug');
+    public static function scopeWithoutTag(Builder $query, $tags, string $type = 'slug'): Builder;
 
     /**
      * Attaches multiple tags to the entity.
      *
-     * @param  string|array  $tags
-     * @param  string  $lang
+     * @param array|string $tags
+     *
      * @return bool
      */
-    public function tag($tags, $lang = null);
+    public function tag($tags): bool;
 
     /**
      * Detaches multiple tags from the entity or if no tags are
      * passed, removes all the attached tags from the entity.
      *
-     * @param  string|array|null  $tags
-     * @param  string  $lang
+     * @param array|string|null $tags
+     *
      * @return bool
      */
-    public function untag($tags = null, $lang = null);
+    public function untag($tags = null): bool;
 
     /**
      * Attaches or detaches the given tags.
@@ -162,15 +170,16 @@ interface TaggableInterface
     /**
      * Prepares the given tags before being saved.
      *
-     * @param  string|array  $tags
+     * @param array|string $tags
+     *
      * @return array
      */
-    public function prepareTags($tags);
+    public function prepareTags($tags): array;
 
     /**
      * Creates a new model instance.
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public static function createTagsModel();
+    public static function createTagsModel(): Model;
 }
