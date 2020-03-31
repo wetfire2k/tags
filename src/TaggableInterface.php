@@ -173,10 +173,11 @@ interface TaggableInterface
      * Prepares the given tags before being saved.
      *
      * @param array|string $tags
+     * @param  string  $lang
      *
      * @return array
      */
-    public function prepareTags($tags): array;
+    public function prepareTags($tags, $lang = null): array;
 
     /**
      * Creates a new model instance.
