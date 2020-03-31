@@ -134,10 +134,11 @@ interface TaggableInterface
      * passed, removes all the attached tags from the entity.
      *
      * @param array|string|null $tags
+     * @param  string  $lang
      *
      * @return bool
      */
-    public function untag($tags = null): bool;
+    public function untag($tags = null, $lang = null): bool;
 
     /**
      * Attaches or detaches the given tags.
