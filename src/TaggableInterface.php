@@ -90,16 +90,10 @@ interface TaggableInterface
     /**
      * Returns the entities with only the given tags.
      *
-<<<<<<< HEAD
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @param  string|array  $tags    
-     * @param  string  $type
-=======
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param array|string                          $tags
      * @param string                                $type
      *
->>>>>>> 27b4f07b1abc72ad57507a0c52eba370caf5973d
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public static function scopeWhereTag(Builder $query, $tags, string $type = 'slug'): Builder;
@@ -118,16 +112,9 @@ interface TaggableInterface
     /**
      * Returns the entities that do not have one of the given tags.
      *
-<<<<<<< HEAD
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @param  string|array  $tags    
      * @param  string  $type
-=======
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param array|string                          $tags
-     * @param string                                $type
-     *
->>>>>>> 27b4f07b1abc72ad57507a0c52eba370caf5973d
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public static function scopeWithoutTag(Builder $query, $tags, string $type = 'slug'): Builder;
@@ -135,90 +122,50 @@ interface TaggableInterface
     /**
      * Attaches multiple tags to the entity.
      *
-<<<<<<< HEAD
      * @param  string|array  $tags
      * @param  string  $lang
      * @return bool
      */
     public function tag($tags, $lang = null);
-=======
-     * @param array|string $tags
-     *
-     * @return bool
-     */
-    public function tag($tags): bool;
->>>>>>> 27b4f07b1abc72ad57507a0c52eba370caf5973d
-
+    
     /**
      * Detaches multiple tags from the entity or if no tags are
      * passed, removes all the attached tags from the entity.
      *
-<<<<<<< HEAD
      * @param  string|array|null  $tags
      * @param  string  $lang
      * @return bool
      */
     public function untag($tags = null, $lang = null);
-=======
-     * @param array|string|null $tags
-     *
-     * @return bool
-     */
-    public function untag($tags = null): bool;
->>>>>>> 27b4f07b1abc72ad57507a0c52eba370caf5973d
-
+    
     /**
      * Attaches or detaches the given tags.
      *
-<<<<<<< HEAD
      * @param  string|array  $tags
      * @param  string  $lang
      * @param  string  $type
      * @return bool
      */
     public function setTags($tags, $lang = null, $type = 'name');
-=======
-     * @param array|string $tags
-     * @param string       $type
-     *
-     * @return bool
-     */
-    public function setTags($tags, string $type = 'name'): bool;
->>>>>>> 27b4f07b1abc72ad57507a0c52eba370caf5973d
 
     /**
      * Attaches the given tag to the entity.
      *
-<<<<<<< HEAD
      * @param  string  $name
      * @param  string  $lang
      * @return void
      */
     public function addTag($name, $lang = null);
-=======
-     * @param string $name
-     *
-     * @return void
-     */
-    public function addTag(string $name): void;
->>>>>>> 27b4f07b1abc72ad57507a0c52eba370caf5973d
+
 
     /**
      * Detaches the given tag from the entity.
      *
-<<<<<<< HEAD
      * @param  string  $name
      * @param  string  $lang
      * @return void
      */
     public function removeTag($name, $lang = null);
-=======
-     * @param string $name
-     *
-     * @return void
-     */
-    public function removeTag(string $name): void;
->>>>>>> 27b4f07b1abc72ad57507a0c52eba370caf5973d
 
     /**
      * Prepares the given tags before being saved.
